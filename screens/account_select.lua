@@ -11,13 +11,12 @@ return Create.frame{
     color = Color.from_rgb(0.5,0.5,0.5),
 
     Create.text{
-        font_size = inch(0.25),
-        text = "Here are your logged in accounts:",
+        text = "Logged in accounts:",
         text_alignment = Enum.TextAlignment.TopMiddle,
-        text_scaling = Enum.TextScaling.Fit,
+        text_scaling = Enum.TextScaling.Max,
         color = Color.from_rgb(0,0,0),
-        scale = UDim2.new(pct(100), inch(0.25)),
-        position = UDim2.new(0, pct(100)-inch(0.1));
+        scale = UDim2.new(pct(100), inch(0.35)),
+        position = UDim2.new(0, pct(100));
         anchor = Vec2.new(0, 1)
     },
 
@@ -25,6 +24,10 @@ return Create.frame{
         scale = UDim2.new(pct(100), pct(100)-inch(1)),
         position = UDim2.new(0, inch(0.6));
         run_script("playerlist.lua"),
+        Create.quad{
+            scale = UDim2.new(pct(100), pct(100)),
+            color = Color.from_rgb(0.8,0.8,0.8),
+        }
     },
 
     Create.text{

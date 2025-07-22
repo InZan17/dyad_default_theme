@@ -104,7 +104,7 @@ return Create.frame{
             self.anchor = Vec2.new(0.5,0)
         end,
         on_click=function (self)
-            load_screen("init")
+            load_screen("account_select")
         end
     },
 }
