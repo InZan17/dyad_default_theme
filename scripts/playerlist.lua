@@ -5,7 +5,7 @@ return Create.list{
     scale = UDim2.new(pct(100), pct(100)),
     child_size = UDim2.new(pct(100), inch(button_height_inch)),
     on_init=function(self)
-        for i, account in ipairs(account_manager:get_available_accounts()) do
+        for i, account in ipairs(LAUNCHER:get_available_accounts()) do
             Create.frame{
                 Create.frame{
                     scale=UDim2.new(pct(100) - inch(padding_inch), pct(100) - inch(padding_inch)),

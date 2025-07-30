@@ -1,39 +1,8 @@
-local current_time_unchanged = 0
-local current_time = 0
-local frames = 0
-local current_frames = 0
-
-account_manager:start_sign_in()
+LAUNCHER:start_sign_in()
 
 return Create.frame{
     on_init=function (self)
     end,
-
-    Create.text{
-        text="0 fps",
-        font_family=HELVETICA,
-        text_alignment=Enum.TextAlignment.TopLeft,
-        font_size=px(18),
-        on_init=function (self)
-            self.scale = UDim2.new(pct(100) - px(8), pct(100) - px(8))
-            self.color = Color.from_rgb_255(255,255,255)
-            self.anchor = Vec2.new(1,0)
-            self.position = UDim2.new(pct(100),0)
-        end,
-        update=function(self)
-            current_time = current_time + delta_time
-            current_time_unchanged = current_time_unchanged + delta_time
-            frames = frames + 1
-            
-            if current_time > 1 then
-                current_frames = frames
-                current_time = current_time - 1
-                frames = 0
-            end
-            
-            self.text = (tostring(current_frames).." FPS\n"..tostring(current_time_unchanged).." seconds since screen was loaded.")
-        end
-    },
     Create.text{
         text="there is no code",
         font_family=HELVETICA,
@@ -46,7 +15,7 @@ return Create.frame{
             self.anchor = Vec2.new(0.5,1)
         end,
         update=function(self)
-            local status = account_manager:get_auth_status()
+            local status = LAUNCHER:get_process_status()
 
             self.text = status.status
         end
@@ -63,7 +32,7 @@ return Create.frame{
             self.anchor = Vec2.new(0.5,0.5)
         end,
         update=function(self)
-            local status = account_manager:get_auth_status()
+            local status = LAUNCHER:get_process_status()
 
             self.text = status.description
         end
@@ -81,7 +50,7 @@ return Create.frame{
             self.anchor = Vec2.new(0.5,0)
         end,
         on_click=function (self)
-            account_manager:open_auth_url()
+            LAUNCHER:open_sign_in_url()
         end
     },
     Create.quad{
@@ -93,7 +62,7 @@ return Create.frame{
         end
     },
     Create.text{
-        text="bakc",
+        text="back",
         font_family=HELVETICA,
         font_size=inch(0.2),
         interactable=true,
@@ -104,6 +73,7 @@ return Create.frame{
             self.anchor = Vec2.new(0.5,0)
         end,
         on_click=function (self)
+            LAUNCHER:stop_active_process()
             load_screen("account_select")
         end
     },
