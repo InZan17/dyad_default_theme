@@ -15,9 +15,9 @@ return Create.frame{
             self.anchor = Vec2.new(0.5,1)
         end,
         update=function(self)
-            local status = LAUNCHER:get_process_status()
+            local info = LAUNCHER:get_process_info()
 
-            self.text = status.status
+            self.text = info.stage
         end
     },
     Create.text{
@@ -32,9 +32,9 @@ return Create.frame{
             self.anchor = Vec2.new(0.5,0.5)
         end,
         update=function(self)
-            local status = LAUNCHER:get_process_status()
+            local info = LAUNCHER:get_process_info()
 
-            self.text = status.description
+            self.text = info.description
         end
     },
     Create.text{
