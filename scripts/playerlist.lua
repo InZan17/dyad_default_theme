@@ -34,6 +34,9 @@ return Create.list{
                     end,
                     on_un_hover=function(self)
                         self.color = Color.from_rgba(0, 0, 0, 0)
+                    end,
+                    on_click_release=function(self)
+                        LAUNCHER:start_profile_update(account.uuid)
                     end
                 }
             }.parent = self
