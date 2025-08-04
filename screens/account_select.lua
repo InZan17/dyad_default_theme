@@ -5,10 +5,12 @@ local sine = false
 local time = 0
 
 return Create.frame{
-    anchor = Vec2.new(0.5,0.5),
-    position = UDim2.new(pct(50),pct(50)),
     scale = UDim2.new(inch(6),inch(4)),
     color = Color.from_rgb(0.5,0.5,0.5),
+
+    on_init=function(self)
+        self:put_center()
+    end,
 
     Create.text{
         text = "Logged in accounts:",
@@ -16,8 +18,10 @@ return Create.frame{
         text_scaling = Enum.TextScaling.Max,
         color = Color.from_rgb(0,0,0),
         scale = UDim2.new(pct(100), inch(0.35)),
-        position = UDim2.new(0, pct(100));
-        anchor = Vec2.new(0, 1)
+
+        on_init=function(self)
+            self:push_top()
+        end,
     },
 
     Create.frame{
