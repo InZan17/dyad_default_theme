@@ -9,7 +9,7 @@ return Create.frame{
         font_size=inch(0.8),
         text_alignment=Enum.TextAlignment.TopMiddle,
         on_init=function (self)
-            self.color = Color.from_rgb_255(255,255,255)
+            self.text_color = Color.from_rgb_255(255,255,255)
             self.scale = UDim2.new(0,inch(1))
             self.position = UDim2.new(pct(50),pct(50) + inch(1.5))
             self.anchor = Vec2.new(0.5,1)
@@ -26,7 +26,7 @@ return Create.frame{
         text_alignment=Enum.TextAlignment.Middle,
         font_size=inch(0.4),
         on_init=function (self)
-            self.color = Color.from_rgb_255(255,255,255)
+            self.text_color = Color.from_rgb_255(255,255,255)
             self.scale = UDim2.new(inch(4),inch(3))
             self.position = UDim2.new(pct(50),pct(50))
             self.anchor = Vec2.new(0.5,0.5)
@@ -44,7 +44,7 @@ return Create.frame{
         text_alignment=Enum.TextAlignment.BottomMiddle,
         interactable=true,
         on_init=function (self)
-            self.color = Color.from_rgb_255(255,255,255)
+            self.text_color = Color.from_rgb_255(255,255,255)
             self.scale = UDim2.new(inch(1),inch(1))
             self.position = UDim2.new(pct(50),pct(50) - inch(1.5))
             self.anchor = Vec2.new(0.5,0)
@@ -67,7 +67,7 @@ return Create.frame{
         font_size=inch(0.2),
         interactable=true,
         on_init=function (self)
-            self.color = Color.from_rgb_255(255,255,255)
+            self.text_color = Color.from_rgb_255(255,255,255)
             self.scale = UDim2.new(inch(1),inch(1))
             self.position = UDim2.new(pct(5),pct(5))
             self.anchor = Vec2.new(0.5,0)

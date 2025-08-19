@@ -34,7 +34,7 @@ return Create.frame{
         }
     },
 
-    Create.text{
+    Create.button{
         anchor = Vec2.new(0.5,0),
         scale = UDim2.new(inch(2), inch(0.5)),
         position = UDim2.new(pct(50), inch(0.05)),
@@ -42,15 +42,11 @@ return Create.frame{
         font_size = inch(0.25),
         text_alignment = Enum.TextAlignment.Middle,
         text_scaling = Enum.TextScaling.Fit,
-    },
-
-    Create.quad{
-        anchor = Vec2.new(0.5,0),
-        scale = UDim2.new(inch(2), inch(0.5)),
-        position = UDim2.new(pct(50), inch(0.05)),
         interactable = true,
+        click_color = Color.from_rgb(1,0,0),
+        hover_color = Color.from_rgb(1,1,0),
         on_click_release=function(self)
             load_screen("login")
         end
-    }
+    },
 }
