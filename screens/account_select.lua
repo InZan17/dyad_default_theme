@@ -34,7 +34,7 @@ return Create.frame{
         }
     },
 
-    Create.button{
+    Create.nine_patch_button{
         anchor = Vec2.new(0.5,0),
         scale = UDim2.new(inch(2), inch(0.5)),
         position = UDim2.new(pct(50), inch(0.05)),
@@ -43,8 +43,21 @@ return Create.frame{
         text_alignment = Enum.TextAlignment.Middle,
         text_scaling = Enum.TextScaling.Fit,
         interactable = true,
+
+        slice_left=0.5,
+        slice_right=0.5,
+        slice_top=0.5,
+        slice_bottom=0.5,
+        size_left=px(20),
+        size_right=px(20),
+        size_top=px(20),
+        size_bottom=px(20),
+        
         click_color = Color.from_rgb(1,0,0),
         hover_color = Color.from_rgb(1,1,0),
+        on_init=function(self)
+            self.texture = load_texture("round.png")
+        end,
         on_click_release=function(self)
             load_screen("login")
         end
