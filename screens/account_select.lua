@@ -17,7 +17,7 @@ return Create.frame{
         text_alignment = Enum.TextAlignment.TopMiddle,
         text_scaling = Enum.TextScaling.Max,
         color = Color.from_rgb(0,0,0),
-        scale = UDim2.new(pct(100), inch(0.35)),
+        scale = UDim2.new(rel(1), inch(0.35)),
 
         on_init=function(self)
             self:push_top()
@@ -25,11 +25,11 @@ return Create.frame{
     },
 
     Create.frame{
-        scale = UDim2.new(pct(100), pct(100)-inch(1)),
+        scale = UDim2.new(rel(1), rel(1)-inch(1)),
         position = UDim2.new(0, inch(0.6));
         run_script("playerlist.lua"),
         Create.quad{
-            scale = UDim2.new(pct(100), pct(100)),
+            scale = UDim2.new(rel(1), rel(1)),
             color = Color.from_rgb(0.8,0.8,0.8),
         }
     },
@@ -37,7 +37,7 @@ return Create.frame{
     Create.nine_patch_button{
         anchor = Vec2.new(0.5,0),
         scale = UDim2.new(inch(2), inch(0.5)),
-        position = UDim2.new(pct(50), inch(0.05)),
+        position = UDim2.new(rel(0.5), inch(0.05)),
         text = "Add account.",
         font_size = inch(0.25),
         text_alignment = Enum.TextAlignment.Middle,

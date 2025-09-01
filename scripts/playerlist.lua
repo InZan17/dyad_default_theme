@@ -2,12 +2,10 @@ local button_height_inch = 0.65
 local padding_inch = 0.1
 
 return Create.list{
-    scale = UDim2.new(pct(100), pct(100)),
-    child_size = UDim2.new(pct(100), inch(button_height_inch)),
+    scale = UDim2.new(rel(1), rel(1)),
+    child_size = UDim2.new(rel(1), inch(button_height_inch)),
     on_init=function(self)
         for i, account in ipairs(LAUNCHER:get_available_accounts()) do
-
-            print(account)
 
             local hovered = false
             local show_text_speed = 4
@@ -16,23 +14,23 @@ return Create.list{
 
             Create.frame{
                 Create.frame{
-                    scale=UDim2.new(pct(100) - inch(padding_inch), pct(100) - inch(padding_inch)),
-                    position=UDim2.new(pct(50), pct(50)),
+                    scale=UDim2.new(rel(1) - inch(padding_inch), rel(1) - inch(padding_inch)),
+                    position=UDim2.new(rel(0.5), rel(0.5)),
                     anchor=Vec2.new(0.5, 0.5),
                     create_player_head(account.skin, {
                         scale=UDim2.new(inch(button_height_inch - padding_inch), inch(button_height_inch - padding_inch)),
                     }),
                     Create.text{
-                        scale=UDim2.new(pct(100) - inch(button_height_inch + padding_inch), pct(100)),
-                        position=UDim2.new(pct(100), 0),
+                        scale=UDim2.new(rel(1) - inch(button_height_inch + padding_inch), rel(1)),
+                        position=UDim2.new(rel(1), 0),
                         anchor=Vec2.new(1, 0),
                         font_size = inch(0.25),
                         text_alignment =  Enum.TextAlignment.MiddleLeft,
                         text = account.username,
                     },
                     Create.text{
-                        scale=UDim2.new(inch(1.75), pct(100)),
-                        position=UDim2.new(pct(100), 0),
+                        scale=UDim2.new(inch(1.75), rel(1)),
+                        position=UDim2.new(rel(1), 0),
                         anchor=Vec2.new(0, 0),
                         font_size = inch(0.25),
                         text_alignment =  Enum.TextAlignment.MiddleRight,
@@ -52,7 +50,7 @@ return Create.list{
                 },
                 Create.quad{
                     interactable=true,
-                    scale=UDim2.new(pct(100), pct(100)),
+                    scale=UDim2.new(rel(1), rel(1)),
                     on_init=function(self)
                         self:on_un_hover()
                     end,

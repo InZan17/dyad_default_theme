@@ -11,7 +11,7 @@ return Create.frame{
         on_init=function (self)
             self.text_color = Color.from_rgb_255(255,255,255)
             self.scale = UDim2.new(0,inch(1))
-            self.position = UDim2.new(pct(50),pct(50) + inch(1.5))
+            self.position = UDim2.new(rel(0.5),rel(0.5) + inch(1.5))
             self.anchor = Vec2.new(0.5,1)
         end,
         update=function(self)
@@ -28,7 +28,7 @@ return Create.frame{
         on_init=function (self)
             self.text_color = Color.from_rgb_255(255,255,255)
             self.scale = UDim2.new(inch(4),inch(3))
-            self.position = UDim2.new(pct(50),pct(50))
+            self.position = UDim2.new(rel(0.5),rel(0.5))
             self.anchor = Vec2.new(0.5,0.5)
         end,
         update=function(self)
@@ -46,7 +46,7 @@ return Create.frame{
         on_init=function (self)
             self.text_color = Color.from_rgb_255(255,255,255)
             self.scale = UDim2.new(inch(1),inch(1))
-            self.position = UDim2.new(pct(50),pct(50) - inch(1.5))
+            self.position = UDim2.new(rel(0.5),rel(0.5) - inch(1.5))
             self.anchor = Vec2.new(0.5,0)
         end,
         on_click=function (self)
@@ -57,7 +57,7 @@ return Create.frame{
         on_init=function (self)
             self.color = Color.from_rgb_255(150,150,150)
             self.scale = UDim2.new(inch(4),inch(3))
-            self.position = UDim2.new(pct(50),pct(50))
+            self.position = UDim2.new(rel(0.5),rel(0.5))
             self.anchor = Vec2.new(0.5,0.5)
         end
     },
@@ -69,7 +69,7 @@ return Create.frame{
         on_init=function (self)
             self.text_color = Color.from_rgb_255(255,255,255)
             self.scale = UDim2.new(inch(1),inch(1))
-            self.position = UDim2.new(pct(5),pct(5))
+            self.position = UDim2.new(rel(0.05),rel(0.05))
             self.anchor = Vec2.new(0.5,0)
         end,
         on_click=function (self)
