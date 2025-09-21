@@ -1,7 +1,8 @@
-LAUNCHER:start_sign_in()
-
 return Create.frame{
     on_init=function (self)
+        LAUNCHER:start_sign_in(function(result)
+
+        end)
     end,
     Create.text{
         text="there is no code",
@@ -15,7 +16,7 @@ return Create.frame{
             self.anchor = Vec2.new(0.5,1)
         end,
         update=function(self)
-            local info = LAUNCHER:get_process_info()
+            local info = LAUNCHER:get_sign_in_status()
 
             self.text = info.stage
         end
@@ -32,7 +33,7 @@ return Create.frame{
             self.anchor = Vec2.new(0.5,0.5)
         end,
         update=function(self)
-            local info = LAUNCHER:get_process_info()
+            local info = LAUNCHER:get_sign_in_status()
 
             self.text = info.description
         end
@@ -73,7 +74,7 @@ return Create.frame{
             self.anchor = Vec2.new(0.5,0)
         end,
         on_click=function (self)
-            LAUNCHER:stop_active_process()
+            LAUNCHER:stop_sign_in()
             load_screen("account_select")
         end
     },

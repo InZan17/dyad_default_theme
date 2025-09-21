@@ -17,7 +17,7 @@ return Create.list{
                     scale=UDim2.new(rel(1) - inch(padding_inch), rel(1) - inch(padding_inch)),
                     position=UDim2.new(rel(0.5), rel(0.5)),
                     anchor=Vec2.new(0.5, 0.5),
-                    create_player_head(account.skin, {
+                    create_player_head(account:get_skin(), {
                         scale=UDim2.new(inch(button_height_inch - padding_inch), inch(button_height_inch - padding_inch)),
                     }),
                     Create.text{
@@ -64,10 +64,8 @@ return Create.list{
                     end,
                     on_click_release=function(self)
                         self.parent.enabled = false
-                        LAUNCHER:start_profile_update(account.uuid, function(result)
-                            print(result.description)
-                            self.parent.enabled = true
-                        end)
+                        account:update_profile_async(account.uuid)
+                        self.parent.enabled = true
                     end
                 }
             }.parent = self

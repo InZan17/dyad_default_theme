@@ -16,7 +16,7 @@ return Create.frame{
         text = "Logged in accounts:",
         text_alignment = Enum.TextAlignment.TopMiddle,
         text_scaling = Enum.TextScaling.Max,
-        color = Color.from_rgb(0,0,0),
+        text_color = Color.from_rgb(0,0,0),
         scale = UDim2.new(rel(1), inch(0.35)),
 
         on_init=function(self)
@@ -34,7 +34,7 @@ return Create.frame{
         }
     },
 
-    Create.nine_patch_button{
+    Create.np_text_label{
         anchor = Vec2.new(0.5,0),
         scale = UDim2.new(inch(2), inch(0.5)),
         position = UDim2.new(rel(0.5), inch(0.05)),
@@ -54,10 +54,10 @@ return Create.frame{
         size_bottom=inch(1),
         side_overflow_behaviour=Enum.SideOverflowBehaviour.Shrink,
         
-        click_color = Color.from_rgb(1,0,0),
-        hover_color = Color.from_rgb(1,1,0),
+        background_clicked_color = Color.from_rgb(1,0,0),
+        background_hovered_color = Color.from_rgb(1,1,0),
         on_init=function(self)
-            self.texture = load_texture("round.png")
+            self.background_texture = load_texture("round.png")
         end,
         on_click_release=function(self)
             load_screen("login")
