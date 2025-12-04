@@ -2,9 +2,11 @@ local button_height_inch = 0.65
 local padding_inch = 0.1
 
 return Create.list{
+    name = "Player list",
     scale = UDim2.new(rel(1), rel(1)),
     child_size = UDim2.new(rel(1), inch(button_height_inch)),
     on_init=function(self)
+        -- Add all accounts
         for i, account in ipairs(LAUNCHER:get_available_accounts()) do
 
             local hovered = false
@@ -13,7 +15,9 @@ return Create.list{
             local text_position = 0
 
             Create.frame{
+                name = "Account "..account.username,
                 Create.frame{
+                    name = "Player head Preview",
                     scale=UDim2.new(rel(1) - inch(padding_inch), rel(1) - inch(padding_inch)),
                     position=UDim2.new(rel(0.5), rel(0.5)),
                     anchor=Vec2.new(0.5, 0.5),
@@ -49,6 +53,7 @@ return Create.list{
                     }
                 },
                 Create.quad{
+                    name = "Select Account Button",
                     interactable=true,
                     scale=UDim2.new(rel(1), rel(1)),
                     on_init=function(self)
@@ -64,7 +69,7 @@ return Create.list{
                     end,
                     on_click_release=function(self)
                         self.parent.enabled = false
-                        account:update_profile_async(account.uuid)
+                        account:update_profile_async()
                         self.parent.enabled = true
                     end
                 }
