@@ -19,7 +19,7 @@ return Create.nine_patch_frame{
     scale = UDim2.new(inch(6),inch(4)),
     background_color = Color.from_rgb(0.9,0.9,0.9),
 
-    on_init=function(self)
+    init=function(self)
         self:put_center()
     end,
 
@@ -31,7 +31,7 @@ return Create.nine_patch_frame{
         text_color = Color.from_rgb(0,0,0),
         scale = UDim2.new(rel(1), inch(0.5)),
 
-        on_init=function(self)
+        init=function(self)
             self:push_top()
         end,
     },
@@ -43,7 +43,7 @@ return Create.nine_patch_frame{
         background_color = Color.from_rgb(0.5,0.5,0.5),
         background_texture=load_texture("background2.png"),
         run_script("playerlist.lua"),
-        on_init=function(self)
+        init=function(self)
         end
     },
 
@@ -69,7 +69,7 @@ return Create.nine_patch_frame{
         
         background_clicked_color = Color.from_rgb(1,0,0),
         background_hovered_color = Color.from_rgb(1,1,0),
-        on_init=function(self)
+        init=function(self)
             self.background_texture = load_texture("round.png")
         end,
         on_click_release=function(self)

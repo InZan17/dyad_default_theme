@@ -10,7 +10,7 @@ create_player_head = function(texture, properties)
             background_uv_offset=Vec2.new(5 / 8 + small_number / 2, 6 / 8 + small_number / 2),
             anchor=Vec2.new(0.5, 0.5),
             position=UDim2.new(rel(0.5), rel(0.5)),
-            on_init=function(self)
+            init=function(self)
                 self.background_texture = texture
             end
         },
@@ -20,7 +20,7 @@ create_player_head = function(texture, properties)
             background_uv_offset=Vec2.new(1 / 8 + small_number / 2, 6 / 8 + small_number / 2),
             anchor=Vec2.new(0.5, 0.5),
             position=UDim2.new(rel(0.5), rel(0.5)),
-            on_init=function(self)
+            init=function(self)
                 self.background_texture = texture
             end
         },
@@ -30,7 +30,7 @@ create_player_head = function(texture, properties)
             background_uv_offset=Vec2.new(8 / 8 + small_number / 2, 6 / 8 + small_number / 2),
             anchor=Vec2.new(0.5, 0.5),
             position=UDim2.new(rel(0.5), rel(0.5)),
-            on_init=function(self)
+            init=function(self)
                 self.background_texture = texture
             end
         },

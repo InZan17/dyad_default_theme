@@ -1,6 +1,6 @@
 return Create.frame{
     background_transparency=1,
-    on_init=function (self)
+    init=function (self)
         LAUNCHER:start_sign_in(function(result)
 
         end)
@@ -12,7 +12,7 @@ return Create.frame{
         text_color=Color.from_rgb(0,0,0),
         font_size=inch(0.1),
         text_alignment=Enum.TextAlignment.TopMiddle,
-        on_init=function (self)
+        init=function (self)
             self.text_color = Color.from_rgb_255(255,255,255)
             self.scale = UDim2.new(0,inch(1))
             self.position = UDim2.new(rel(0.5),rel(0.5) + inch(1.5))
@@ -31,7 +31,7 @@ return Create.frame{
         text_alignment=Enum.TextAlignment.Middle,
         text_color=Color.from_rgb(0,0,0),
         font_size=inch(0.4),
-        on_init=function (self)
+        init=function (self)
             self.text_color = Color.from_rgb_255(255,255,255)
             self.scale = UDim2.new(inch(4),inch(3))
             self.position = UDim2.new(rel(0.5),rel(0.5))
@@ -50,7 +50,7 @@ return Create.frame{
         font_size=inch(0.6),
         text_alignment=Enum.TextAlignment.BottomMiddle,
         interactable=true,
-        on_init=function (self)
+        init=function (self)
             self.text_color = Color.from_rgb_255(255,255,255)
             self.scale = UDim2.new(inch(1),inch(1))
             self.position = UDim2.new(rel(0.5),rel(0.5) - inch(1.5))
@@ -61,7 +61,7 @@ return Create.frame{
         end
     },
     Create.frame{
-        on_init=function (self)
+        init=function (self)
             self.background_color = Color.from_rgb_255(150,150,150)
             self.scale = UDim2.new(inch(4),inch(3))
             self.position = UDim2.new(rel(0.5),rel(0.5))
@@ -75,7 +75,7 @@ return Create.frame{
         font_family=HELVETICA,
         font_size=inch(0.2),
         interactable=true,
-        on_init=function (self)
+        init=function (self)
             self.text_color = Color.from_rgb_255(255,255,255)
             self.scale = UDim2.new(inch(1),inch(1))
             self.position = UDim2.new(rel(0.05),rel(0.05))

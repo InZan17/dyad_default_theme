@@ -6,7 +6,7 @@ return Create.scroll_frame{
     background_transparency=1,
     scale = UDim2.new(rel(1), rel(1)),
     child_size = UDim2.new(rel(1), inch(button_height_inch)),
-    on_init=function(self)
+    init=function(self)
         -- Add all accounts
         for i, account in ipairs(LAUNCHER:get_available_accounts()) do
 
@@ -63,7 +63,7 @@ return Create.scroll_frame{
                     background_transparency=1,
                     interactable=true,
                     scale=UDim2.new(rel(1), rel(1)),
-                    on_init=function(self)
+                    init=function(self)
                         self:on_un_hover()
                     end,
                     on_hover=function(self)
