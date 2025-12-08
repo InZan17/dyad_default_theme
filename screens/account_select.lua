@@ -65,7 +65,7 @@ return Create.nine_patch_frame{
         size_right=inch(1),
         size_top=inch(1),
         size_bottom=inch(1),
-        side_overflow_behaviour=Enum.SideOverflowBehaviour.Shrink,
+        side_overflow_behaviour=Enum.SideOverflowBehavior.Shrink,
         
         background_clicked_color = Color.from_rgb(1,0,0),
         background_hovered_color = Color.from_rgb(1,1,0),

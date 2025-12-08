@@ -321,21 +321,6 @@ type PartialTransform2D = {
     snap_to_pixels: boolean?,
 }
 
-declare class Actor2D extends Actor
-    position: UDim2
-    scale: UDim2
-    anchor: Vec2
-    rotation: number
-    snap_to_pixels: boolean
-
-    function put_center(self)
-    function push_left(self)
-    function push_right(self)
-    function push_top(self)
-    function push_bottom(self)
-end
-
-
 type PartialBackgroundAppearance = {
     background_color: Color?,
     background_hovered_color: Color?,
@@ -347,7 +332,15 @@ type PartialBackgroundAppearance = {
     background_material: Material?,
 }
 
-declare class Actor2DBackground extends Actor2D
+declare class Actor2D extends Actor
+    -- 2D transform
+    position: UDim2
+    scale: UDim2
+    anchor: Vec2
+    rotation: number
+    snap_to_pixels: boolean
+
+    -- 2D background appearance
     background_color: Color
     background_hovered_color: Color
     background_clicked_color: Color
@@ -356,13 +349,24 @@ declare class Actor2DBackground extends Actor2D
     background_uv_offset: Vec2
     background_uv_scale: Vec2
     background_material: Material
+
+    -- 2D transform methods
+    function put_center(self)
+    function push_left(self)
+    function push_right(self)
+    function push_top(self)
+    function push_bottom(self)
 end
 
+type Partial2DActor<Self> = PartialActor<Self> & PartialTransform2D & PartialBackgroundAppearance
 
-declare class FrameActor extends Actor2DBackground
-    [number]: Actor?
+declare class FrameActor extends Actor2D
+    [number]: Actor2D?
+
+    function insert_child(self, child_actor: Actor2D, index: number?)  
+    function find_child(self, child_name: string): Actor2D?  
 end
-type PartialFrameActor = PartialActor<FrameActor> & PartialTransform2D & PartialBackgroundAppearance
+type PartialFrameActor = Partial2DActor<FrameActor>
 
 
 type PartialNinePatchInfo = {
@@ -376,7 +380,6 @@ type PartialNinePatchInfo = {
     axis_stretch_x: AxisStretchMode?,
     axis_stretch_y: AxisStretchMode?,
     side_overflow_behavior: SideOverflowBehavior?,
-    
 }
 
 declare class NinePatchFrameActor extends FrameActor
@@ -391,7 +394,7 @@ declare class NinePatchFrameActor extends FrameActor
     axis_stretch_y: AxisStretchMode
     side_overflow_behavior: SideOverflowBehavior
 end
-type PartialNinePatchFrameActor = PartialActor<FrameActor> & PartialNinePatchInfo & PartialTransform2D & PartialBackgroundAppearance
+type PartialNinePatchFrameActor = Partial2DActor<NinePatchFrameActor> & PartialNinePatchInfo
 
 
 type PartialLayoutInfo = {
@@ -413,7 +416,7 @@ declare class ScrollFrameActor extends FrameActor
     inch_scroll: boolean
     vertical_scroll: boolean
 end
-type PartialScrollFrameActor = PartialActor<ScrollFrameActor> & PartialLayoutInfo & PartialTransform2D & PartialBackgroundAppearance
+type PartialScrollFrameActor = Partial2DActor<ScrollFrameActor> & PartialLayoutInfo
 
 
 type Partial2DViewport = {
@@ -448,18 +451,86 @@ declare class TextureFrameActor extends FrameActor
     view_uv_scale: Vec2
     view_material: Material
 end
+type PartialTextureFrameActor = Partial2DActor<TextureFrameActor> & Partial2DViewport
 
-type PartialTextureFrameActor = PartialActor<TextureFrameActor> & Partial2DViewport & PartialTransform2D & PartialBackgroundAppearance
+
+type PartialTextInfo = {
+    text: string?,
+    text_color: Color?,
+    emoji_color: Color?,
+    caret_color: Color?,
+    text_material: Material?,
+    emoji_material: Material?,
+    caret_material: Material?,
+    font_size: UDim?,
+    line_height_em: number?,
+    padding_top_em: number?,
+    padding_bottom_em: number?,
+    font_family: string?,
+    text_alignment: TextAlignment?,
+    text_scaling: TextScaling?,
+    text_wrap: TextWrap?,
+    text_weight: TextWeight?,
+    text_stretch: TextStretch?,
+    editable: boolean?,
+}
+
+declare class TextLabelActor extends Actor2D
+    text: string
+    text_color: Color
+    emoji_color: Color
+    caret_color: Color
+    text_material: Material
+    emoji_material: Material
+    caret_material: Material
+    font_size: UDim
+    line_height_em: number
+    padding_top_em: number
+    padding_bottom_em: number
+    font_family: string
+    text_alignment: TextAlignment?
+    text_scaling: TextScaling
+    text_wrap: TextWrap
+    text_weight: TextWeight
+    text_stretch: TextStretch
+    editable: boolean
+end
+
+type PartialTextLabelActor = Partial2DActor<TextLabelActor> & PartialTextInfo
+
+
+declare class NPTextLabelActor extends TextLabelActor
+    slice_bottom: number
+    slice_top: number
+    slice_left: number
+    slice_right: number
+    size_bottom: UDim
+    size_top: UDim
+    size_left: UDim
+    axis_stretch_x: AxisStretchMode
+    axis_stretch_y: AxisStretchMode
+    side_overflow_behavior: SideOverflowBehavior
+end
+
+type PartialNPTextLabelActor = Partial2DActor<NPTextLabelActor> & PartialTextInfo & PartialNinePatchInfo
 
 declare Create: {
     frame: ((data: PartialFrameActor) -> FrameActor),
     nine_patch_frame: ((data: PartialNinePatchFrameActor) -> NinePatchFrameActor),
     texture_frame: ((data: PartialTextureFrameActor) -> TextureFrameActor),
     scroll_frame: ((data: PartialScrollFrameActor) -> ScrollFrameActor),
+    text_label: ((data: PartialTextLabelActor) -> TextLabelActor),
+    np_text_label: ((data: PartialNPTextLabelActor) -> NPTextLabelActor),
 }
 
-declare create_material: ((data: {
+declare create_material: (data: {
     frag: string?,
     vert: string?,
     uniforms: {any}?
-}) -> Material)
+}) -> Material
+
+declare load_texture: (texture_path: string) -> Texture
+
+declare load_screen: (texture_path: string) -> ()
+
+declare get_window_position: () -> Vec2
